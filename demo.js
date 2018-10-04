@@ -1,30 +1,26 @@
+
+var date1;
+var date2;
+
+/**
+ * NOTE Right now we can put a listener on all <input>'s
+ * but eventually that'll be impractical...
+ */
 $('.input').on('change', function() {
-    var number1 = parseInt($('[name="num1"]').val());
-    var number2 = parseInt($('[name="num2"]').val());
-    var result = number1 + number2;
-    $('#result').text(result);
-})
 
-moment.fn.diff = function result() {
-$('.input').on('change', function() {
-    var a = moment.$(start);
-    var b = moment.$(end);
-    var days = a.diff(b, 'days')
-    
-    
-    // var a = document.getElementById("start").value;
-    // var b = document.getElementById("end").value;
+    date1 = $('[name="start"]').val();
+    date2= $('[name="end"]').val();
 
-    // var start = moment(a).format('DD-MM-YYYY');
-    // var end = moment(b).format('DD-MM-YYYY');
+    // Null check because maybe just one date is set at this point
+    if (date1 != null && date1.trim() !== '' &&
+            date2 != null && date2.trim() !== '')
+    {
+        // Make the dates into moment.js objects now
+        date1 = moment(date1, 'YYYY-MM-DD');
+        date2 = moment(date2, 'YYYY-MM-DD');
 
-    // var days = end.diff(start, 'days');
-}) }
-// var c = moment.$(a);
-// var d = moment.$(b);
-// return result2 = c.diff(d, 'days')+1
-// }) } 
+        var timeDiff = date2.diff(date1, 'days');
 
-// var myElement = document.getElementById("intro");
-//var diff = (Date.parse(end_date) - Date.parse(start_date)) / 86400000;
-//the division by 86400000 is because 24 hours * 60 mins * 60 seconds * 1000 milliseconds
+        $('#days').text(timeDiff + ' days');
+    }
+});
