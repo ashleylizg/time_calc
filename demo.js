@@ -6,7 +6,7 @@ var date2;
  * NOTE Right now we can put a listener on all <input>'s
  * but eventually that'll be impractical...
  */
-$('.input').on('change', function() {
+$('.input[type="button"]').on('click', function() {
 
     date1 = $('[name="start"]').val();
     date2= $('[name="end"]').val();
@@ -19,8 +19,8 @@ $('.input').on('change', function() {
         date1 = moment(date1, 'YYYY-MM-DD');
         date2 = moment(date2, 'YYYY-MM-DD');
 
-        var timeDiff = date2.diff(date1, 'days');
+        var timeDiffInDays = date2.diff(date1, 'days');
 
-        $('#days').text(timeDiff + ' days');
+        $('#days').text(timeDiffInDays + ' days');
     }
 });
