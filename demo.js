@@ -1,7 +1,8 @@
 
 var date1;
 var date2;
-
+var principal;
+var interest;
 /**
  * NOTE Right now we can put a listener on all <input>'s
  * but eventually that'll be impractical...
@@ -22,5 +23,11 @@ $('.input[type="button"]').on('click', function() {
         var timeDiffInDays = date2.diff(date1, 'days');
 
         $('#days').text(timeDiffInDays + ' days');
+
+        principal = $('#principal').val();
+        interest = $('#interest').val();
+        var amount_payment = ((interest / 365)*principal ) * timeDiffInDays + (principal / timeDiffInDays);
+    
+        $('#payment-calc').text(amount_payment + ' per day');
     }
 });
