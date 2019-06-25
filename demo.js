@@ -42,7 +42,7 @@ $('#submit').on('click', function() {
         if (principal != null && principal.trim() !== '' &&
                 interest != null && interest.trim() !== '')
         {
-            paymentAmount = ((interest / 365) * principal ) * timeDiffInDays + (principal / timeDiffInDays);
+            paymentAmount = ((((interest / 365) * principal ) * timeDiffInDays) + principal) / timeDiffInDays;
             paymentAmount = roundNumberToBeMoney(paymentAmount);
     
             $('#payment-calculation').text('$' + paymentAmount + ' per day');
